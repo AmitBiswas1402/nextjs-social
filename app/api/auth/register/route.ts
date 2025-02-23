@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { connectToDB } from "@/lib/db.js";
+import { connectToDB } from "@/lib/db";
 import User from "@/models/User";
 
 export async function POST(request: NextRequest) {
