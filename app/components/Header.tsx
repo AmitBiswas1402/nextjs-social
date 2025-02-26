@@ -1,0 +1,29 @@
+import { signOut, useSession } from "next-auth/react";
+import Link from "next/link";
+
+function Header() {
+  const { data: session } = useSession();
+
+  const handleSignOut = async () => {
+    try {
+      await signOut();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  return (
+    <>
+      <button onClick={handleSignOut}>Signout</button>
+      {session ? (
+        <div>Welcome</div>
+      ) : (
+        <div>
+          <Link href="/login">Login</Link>
+          <Link href="/register">Register</Link>
+        </div>
+      )}
+    </>
+  );
+}
+export default Header;
